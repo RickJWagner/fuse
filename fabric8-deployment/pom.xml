@@ -105,6 +105,7 @@
 		<module>commonprofile</module>
 	</modules>
 	<distributionManagement>
+		<!-- Change this value as per your requirements-->
 		<repository>
 			<id>localrepo</id>
 			<url>file:///Users/smunirat/fuserepo1</url>
