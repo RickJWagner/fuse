@@ -1,0 +1,27 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.sundar.fabric8</groupId>
+    <artifactId>fabric8-deployment</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>commonprofile</artifactId>
+  <packaging>jar</packaging>
+  <name>CommonProfile</name>
+  <properties>
+		<profile>commonprofile</profile>
+		<parentProfiles>feature-camel feature-cxf</parentProfiles>
+		<bundles>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-dbcp/1.4_3 wrap:mvn:mysql/mysql-connector-java/5.1.38</bundles>
+		<includeArtifact>false</includeArtifact>
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>${maven-bundle-plugin-version}</version>
+				<extensions>true</extensions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

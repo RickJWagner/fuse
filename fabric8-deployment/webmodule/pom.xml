@@ -1,0 +1,78 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.sundar.fabric8</groupId>
+		<artifactId>fabric8-deployment</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>webmodule</artifactId>
+	<properties>
+		<profile>webprofile</profile>
+		<parentProfiles>feature-camel feature-cxf</parentProfiles>
+		<bundles>mvn:com.camel.examples/camel-envbased-props/1.11.4-SNAPSHOT</bundles>
+		<features>fabric-cxf-registry fabric-cxf</features>
+		<includeArtifact>false</includeArtifact>
+	</properties>
+	<packaging>jar</packaging>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>${maven-bundle-plugin-version}</version>
+				<extensions>true</extensions>
+			</plugin>
+
+			<!-- <plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>fabric8-maven-plugin</artifactId>
+				<version>1.2.0.redhat-133</version>
+				<configuration>
+					<profile>${profile}</profile>
+					<parentProfiles>${parentProfiles}</parentProfiles>
+					<bundles>${bundles}</bundles>
+					<features>${features}</features>
+					<includeArtifact>${includeArtifact}</includeArtifact>
+					<ignoreProject>${ignoreProject}</ignoreProject>
+				</configuration>
+				<executions>
+					<execution>
+						<id>fabric8-zip</id>
+						<phase>
+									package
+								</phase>
+						<goals>
+							<goal>zip</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+<plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>fabric8-maven-plugin</artifactId>
+				<version>1.2.0.redhat-133</version>
+				<configuration>
+					<profile>${profile}</profile>
+					<parentProfiles>${parentProfiles}</parentProfiles>
+					<bundles>${bundles}</bundles>
+					<features>${features}</features>
+					<includeArtifact>${includeArtifact}</includeArtifact>
+					<ignoreProject>${ignoreProject}</ignoreProject>
+				</configuration>
+				<executions>
+					<execution>
+						<id>fabric8-zip</id>
+						<phase>
+									package
+								</phase>
+						<goals>
+							<goal>zip</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+-->
+		</plugins>
+	</build>
+</project>
