@@ -21,6 +21,7 @@ WebModule has a single bundle
 The target is now to create two profiles which will encapsulate all the required bundles for the project and deploy it to 
 a newer version profile on the fabric git.
 
+Run mvn install to create the profile zips and to deploy in to the repository specified in the distributionManagement section of the pom
 
 camel-fabric-deploy
 
