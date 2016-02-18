@@ -124,6 +124,7 @@
 					<features>${features}</features>
 					<includeArtifact>${includeArtifact}</includeArtifact>
 					<ignoreProject>${ignoreProject}</ignoreProject>
+					<profileConfigDir>${profileConfigDir}</profileConfigDir>
 				</configuration>
 				<executions>
 					<execution>
