@@ -9,20 +9,10 @@
   <packaging>jar</packaging>
   <name>CommonProfile</name>
   <properties>
-		<profile>commonprofile</profile>
-		<parentProfiles>feature-camel feature-cxf</parentProfiles>
-		<bundles>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-dbcp/1.4_3 wrap:mvn:mysql/mysql-connector-java/5.1.38</bundles>
-		<includeArtifact>false</includeArtifact>
-		<profileConfigDir>src/main/fabric8/${environment}</profileConfigDir>
-	</properties>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<version>${maven-bundle-plugin-version}</version>
-				<extensions>true</extensions>
-			</plugin>
-		</plugins>
-	</build>
+	<profile>commonprofile</profile>
+	<parentProfiles>feature-camel feature-cxf</parentProfiles>
+	<bundles>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-dbcp/1.4_3 wrap:mvn:mysql/mysql-connector-java/5.1.38</bundles>
+	<includeArtifact>false</includeArtifact>
+	<profileConfigDir>src/main/fabric8/${environment}</profileConfigDir>
+</properties>
 </project>
