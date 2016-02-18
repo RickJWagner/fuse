@@ -13,6 +13,7 @@
 		<parentProfiles>feature-camel feature-cxf</parentProfiles>
 		<bundles>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-dbcp/1.4_3 wrap:mvn:mysql/mysql-connector-java/5.1.38</bundles>
 		<includeArtifact>false</includeArtifact>
+		<profileConfigDir>src/main/fabric8/${environment}</profileConfigDir>
 	</properties>
 	<build>
 		<plugins>
