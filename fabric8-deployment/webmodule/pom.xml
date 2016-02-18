@@ -10,7 +10,9 @@
 	<properties>
 		<profile>webprofile</profile>
 		<parentProfiles>feature-camel feature-cxf</parentProfiles>
-		<bundles>mvn:com.camel.examples/camel-envbased-props/1.11.4-SNAPSHOT</bundles>
+		<bundles>mvn:com.sundar.fabric8/webbackend/0.0.1-SNAPSHOT
+			mvn:com.sundar.fabric8/webfrontend/0.0.1-SNAPSHOT
+			mvn:com.sundar.fabric8/soapservices/0.0.1-SNAPSHOT</bundles>
 		<features>fabric-cxf-registry fabric-cxf</features>
 		<includeArtifact>false</includeArtifact>
 		<profileConfigDir>src/main/fabric8/${environment}</profileConfigDir>
