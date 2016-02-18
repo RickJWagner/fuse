@@ -13,6 +13,7 @@
 		<bundles>mvn:com.camel.examples/camel-envbased-props/1.11.4-SNAPSHOT</bundles>
 		<features>fabric-cxf-registry fabric-cxf</features>
 		<includeArtifact>false</includeArtifact>
+		<profileConfigDir>src/main/fabric8/${environment}</profileConfigDir>
 	</properties>
 	<packaging>jar</packaging>
 	<build>
@@ -23,56 +24,6 @@
 				<version>${maven-bundle-plugin-version}</version>
 				<extensions>true</extensions>
 			</plugin>
-
-			<!-- <plugin>
-				<groupId>io.fabric8</groupId>
-				<artifactId>fabric8-maven-plugin</artifactId>
-				<version>1.2.0.redhat-133</version>
-				<configuration>
-					<profile>${profile}</profile>
-					<parentProfiles>${parentProfiles}</parentProfiles>
-					<bundles>${bundles}</bundles>
-					<features>${features}</features>
-					<includeArtifact>${includeArtifact}</includeArtifact>
-					<ignoreProject>${ignoreProject}</ignoreProject>
-				</configuration>
-				<executions>
-					<execution>
-						<id>fabric8-zip</id>
-						<phase>
-									package
-								</phase>
-						<goals>
-							<goal>zip</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-<plugin>
-				<groupId>io.fabric8</groupId>
-				<artifactId>fabric8-maven-plugin</artifactId>
-				<version>1.2.0.redhat-133</version>
-				<configuration>
-					<profile>${profile}</profile>
-					<parentProfiles>${parentProfiles}</parentProfiles>
-					<bundles>${bundles}</bundles>
-					<features>${features}</features>
-					<includeArtifact>${includeArtifact}</includeArtifact>
-					<ignoreProject>${ignoreProject}</ignoreProject>
-				</configuration>
-				<executions>
-					<execution>
-						<id>fabric8-zip</id>
-						<phase>
-									package
-								</phase>
-						<goals>
-							<goal>zip</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
--->
 		</plugins>
 	</build>
 </project>
