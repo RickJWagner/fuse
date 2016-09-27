@@ -1,0 +1,29 @@
+<sy:switchyard xmlns:bean="urn:switchyard-component-bean:config:2.0"
+	xmlns:resteasy="urn:switchyard-component-resteasy:config:2.0"
+	xmlns:sca="http://docs.oasis-open.org/ns/opencsa/sca/200912" 
+	xmlns:sy="urn:switchyard-config:switchyard:2.0" 
+	xmlns:http="urn:switchyard-component-http:config:2.0" 
+	name="helloworld1" targetNamespace="urn:com.redhat.helloworld1:helloworld1:1.0">
+	<sca:composite name="switchyard-rest-demo-one"
+		targetNamespace="urn:com.redhat.helloworld1:switchyard-rest-demo-one:1.0">
+		<sca:component name="OrderServiceImpl">
+			<bean:implementation.bean class="com.redhat.helloworld1.rest.OrderServiceImpl" />
+			<sca:service name="OrderService">
+				<sca:interface.java interface="com.redhat.helloworld1.rest.OrderService" />
+			</sca:service>
+		</sca:component>
+		<sca:service name="OrderService" promote="OrderServiceImpl/OrderService">
+			<sca:interface.java interface="com.redhat.helloworld1.rest.OrderService" />
+			<resteasy:binding.rest name="OrderBinding">
+				<resteasy:interfaces>com.redhat.helloworld1.rest.OrderResource</resteasy:interfaces>
+				<resteasy:contextPath>helloworld1-web</resteasy:contextPath>
+			</resteasy:binding.rest>
+		</sca:service>
+		
+	</sca:composite>
+	<sy:domain>
+		<sy:properties>
+			<sy:property name="org.switchyard.handlers.messageTrace.enabled" value="true"/>
+		</sy:properties>
+	</sy:domain>
+</sy:switchyard>
