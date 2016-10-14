@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- ***************************************************** {COPYRIGHT-TOP} ***
+* Licensed Materials - Property of IBM
+* Restricted Materials of IBM
+*
+* 5725-E59
+*
+* (C) Copyright IBM Corp. 2006, 2011  All Rights Reserved.
+*
+* US Government Users Restricted Rights - Use, duplication, or
+* disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+********************************************************** {COPYRIGHT-END} --><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:mdmwsdl="http://www.ibm.com/mdm/wsdl/schema" xmlns:mdm="http://www.ibm.com/mdm/schema" targetNamespace="http://www.ibm.com/mdm/wsdl/schema">
+			
+	<xsd:import namespace="http://www.ibm.com/mdm/schema" schemaLocation="PhysicalMDM.xsd"></xsd:import>
+	<xsd:complexType name="ProcessingFaultType">
+	<xsd:sequence>
+		<xsd:element minOccurs="1" maxOccurs="1" ref="mdm:ResponseControl"></xsd:element>
+		<xsd:element minOccurs="1" maxOccurs="1" ref="mdm:RequestType"></xsd:element>		
+		<xsd:element minOccurs="1" maxOccurs="1" ref="mdm:TxResult"></xsd:element>
+	</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="TCRMInquiryInputType">
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" ref="mdm:RequestControl"></xsd:element>
+			<xsd:element minOccurs="1" maxOccurs="1" ref="mdm:InquiryParam"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="DWLCompositeServiceRequestType">
+		<xsd:sequence>
+			<xsd:element ref="mdm:GlobalFields" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:choice>
+				<xsd:element ref="mdm:DWLAdminService" minOccurs="1" maxOccurs="1"></xsd:element>
+				<xsd:element ref="mdm:TCRMService" minOccurs="1" maxOccurs="1"></xsd:element>
+			</xsd:choice>
+			<xsd:choice minOccurs="0" maxOccurs="unbounded">
+			    <xsd:element ref="mdm:DWLAdminService" minOccurs="1" maxOccurs="1"></xsd:element>
+				<xsd:element ref="mdm:TCRMService" minOccurs="1" maxOccurs="1"></xsd:element>
+				<xsd:element ref="mdm:choose" minOccurs="1" maxOccurs="1"></xsd:element>
+				<xsd:element ref="mdm:for-each" minOccurs="1" maxOccurs="1"></xsd:element>
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="DWLCompositeServiceResponseType">
+		<xsd:sequence>
+			<xsd:choice>
+				<xsd:element ref="mdm:DWLAdminService" minOccurs="1" maxOccurs="unbounded"></xsd:element>
+				<xsd:element ref="mdm:TCRMService" minOccurs="1" maxOccurs="unbounded"></xsd:element>
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+
+</xsd:schema>

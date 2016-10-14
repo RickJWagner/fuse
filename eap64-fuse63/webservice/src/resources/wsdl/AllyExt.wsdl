@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+	IBM-MDMWB-1.0-[776935a06bf2056033fb5a3b8a0fdd95]
+-->
+<wsdl:definitions name="AllyExt" targetNamespace="http://composite.acm.cia.ally.com/AllyExt/port" 
+	xmlns:mdmport="http://composite.acm.cia.ally.com/AllyExt/port" 
+	xmlns:mdm="http://www.ibm.com/mdm/schema" 
+	xmlns:mdmwsdl="http://www.ibm.com/mdm/wsdl/schema" 
+	xmlns:jaxws="http://java.sun.com/xml/ns/jaxws"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+	
+	<jaxws:bindings>
+        <jaxws:enableWrapperStyle>false</jaxws:enableWrapperStyle>
+    </jaxws:bindings>
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://composite.acm.cia.ally.com/AllyExt/port" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+		<xsd:import namespace="http://www.ibm.com/mdm/schema" schemaLocation="PhysicalMDM.xsd" />
+		<xsd:import namespace="http://www.ibm.com/mdm/wsdl/schema" schemaLocation="MDMWSDLCommon.xsd" />
+
+			<xsd:complexType name="MAPAInputType">
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:RequestControl"/>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:TCRMMAPABObj"/>
+			</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="MAPAOutputType">
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:ResponseControl"/>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:TxResult"/>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:TCRMMAPABObj"/>
+			</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SearchAllyPersonInputType">
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:RequestControl"/>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:TCRMPersonSearchBObj"/>
+			</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SearchAllyPersonOutputType">
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:ResponseControl"/>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:TxResult"/>
+				<xsd:element maxOccurs="unbounded" minOccurs="1" ref="mdm:AllyTCRMPersonSearchResultBObj"/>
+			</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="GetXConsentGroupOutputType">
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:ResponseControl"/>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:TxResult"/>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:XConsentGroupBObj"/>
+			</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="AddXConsentGroupInputType">
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:RequestControl"/>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:XConsentGroupBObj"/>
+			</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="AddXConsentGroupOutputType">
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:ResponseControl"/>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:TxResult"/>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:XConsentGroupBObj"/>
+			</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="UpdateXConsentGroupInputType">
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:RequestControl"/>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:XConsentGroupBObj"/>
+			</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="UpdateXConsentGroupOutputType">
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:ResponseControl"/>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:TxResult"/>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:XConsentGroupBObj"/>
+			</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="GetXConsentOutputType">
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:ResponseControl"/>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:TxResult"/>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:XConsentBObj"/>
+			</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="AddXConsentInputType">
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:RequestControl"/>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:XConsentBObj"/>
+			</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="AddXConsentOutputType">
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:ResponseControl"/>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:TxResult"/>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:XConsentBObj"/>
+			</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="UpdateXConsentInputType">
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:RequestControl"/>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:XConsentBObj"/>
+			</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="UpdateXConsentOutputType">
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:ResponseControl"/>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:TxResult"/>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:XConsentBObj"/>
+			</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="MaintainAllyConsentInputType">
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:RequestControl"/>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:AllyTCRMPersonBObj"/>
+			</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="MaintainAllyConsentOutputType">
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:ResponseControl"/>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:TxResult"/>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:AllyTCRMPersonBObj"/>
+			</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SearchAllyContractInputType">
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:RequestControl"/>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:TCRMContractSearchBObj"/>
+			</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SearchAllyContractOutputType">
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:ResponseControl"/>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="mdm:TxResult"/>
+				<xsd:element maxOccurs="unbounded" minOccurs="1" ref="mdm:TCRMContractBObj"/>
+			</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="MAPA" type="mdmport:MAPAInputType"/>
+			<xsd:element name="MAPAResponse" type="mdmport:MAPAOutputType"/>
+			<xsd:element name="searchAllyPerson" type="mdmport:SearchAllyPersonInputType"/>
+			<xsd:element name="searchAllyPersonResponse" type="mdmport:SearchAllyPersonOutputType"/>
+			<xsd:element name="getXConsentGroup" type="mdmwsdl:TCRMInquiryInputType"/>
+			<xsd:element name="getXConsentGroupResponse" type="mdmport:GetXConsentGroupOutputType"/>
+			<xsd:element name="addXConsentGroup" type="mdmport:AddXConsentGroupInputType"/>
+			<xsd:element name="addXConsentGroupResponse" type="mdmport:AddXConsentGroupOutputType"/>
+			<xsd:element name="updateXConsentGroup" type="mdmport:UpdateXConsentGroupInputType"/>
+			<xsd:element name="updateXConsentGroupResponse" type="mdmport:UpdateXConsentGroupOutputType"/>
+			<xsd:element name="getXConsent" type="mdmwsdl:TCRMInquiryInputType"/>
+			<xsd:element name="getXConsentResponse" type="mdmport:GetXConsentOutputType"/>
+			<xsd:element name="addXConsent" type="mdmport:AddXConsentInputType"/>
+			<xsd:element name="addXConsentResponse" type="mdmport:AddXConsentOutputType"/>
+			<xsd:element name="updateXConsent" type="mdmport:UpdateXConsentInputType"/>
+			<xsd:element name="updateXConsentResponse" type="mdmport:UpdateXConsentOutputType"/>
+			<xsd:element name="maintainAllyConsent" type="mdmport:MaintainAllyConsentInputType"/>
+			<xsd:element name="maintainAllyConsentResponse" type="mdmport:MaintainAllyConsentOutputType"/>
+			<xsd:element name="searchAllyContract" type="mdmport:SearchAllyContractInputType"/>
+			<xsd:element name="searchAllyContractResponse" type="mdmport:SearchAllyContractOutputType"/>
+			<xsd:element name="processingFault" type="mdmwsdl:ProcessingFaultType"/>
+
+		</xsd:schema>
+	</wsdl:types>
+	
+	<wsdl:message name="ProcessingFault">
+		<wsdl:part element="mdmport:processingFault" name="parameters"/>
+	</wsdl:message>
+
+	<wsdl:message name="MAPARequest">
+		<wsdl:part element="mdmport:MAPA" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="MAPAResponse">
+		<wsdl:part element="mdmport:MAPAResponse" name="parameters"/>
+	</wsdl:message>
+	
+	<wsdl:message name="SearchAllyPersonRequest">
+		<wsdl:part element="mdmport:searchAllyPerson" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="SearchAllyPersonResponse">
+		<wsdl:part element="mdmport:searchAllyPersonResponse" name="parameters"/>
+	</wsdl:message>
+	
+	<wsdl:message name="GetXConsentGroupRequest">
+		<wsdl:part element="mdmport:getXConsentGroup" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="GetXConsentGroupResponse">
+		<wsdl:part element="mdmport:getXConsentGroupResponse" name="parameters"/>
+	</wsdl:message>
+	
+	<wsdl:message name="AddXConsentGroupRequest">
+		<wsdl:part element="mdmport:addXConsentGroup" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="AddXConsentGroupResponse">
+		<wsdl:part element="mdmport:addXConsentGroupResponse" name="parameters"/>
+	</wsdl:message>
+	
+	<wsdl:message name="UpdateXConsentGroupRequest">
+		<wsdl:part element="mdmport:updateXConsentGroup" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="UpdateXConsentGroupResponse">
+		<wsdl:part element="mdmport:updateXConsentGroupResponse" name="parameters"/>
+	</wsdl:message>
+	
+	<wsdl:message name="GetXConsentRequest">
+		<wsdl:part element="mdmport:getXConsent" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="GetXConsentResponse">
+		<wsdl:part element="mdmport:getXConsentResponse" name="parameters"/>
+	</wsdl:message>
+	
+	<wsdl:message name="AddXConsentRequest">
+		<wsdl:part element="mdmport:addXConsent" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="AddXConsentResponse">
+		<wsdl:part element="mdmport:addXConsentResponse" name="parameters"/>
+	</wsdl:message>
+	
+	<wsdl:message name="UpdateXConsentRequest">
+		<wsdl:part element="mdmport:updateXConsent" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="UpdateXConsentResponse">
+		<wsdl:part element="mdmport:updateXConsentResponse" name="parameters"/>
+	</wsdl:message>
+	
+	<wsdl:message name="MaintainAllyConsentRequest">
+		<wsdl:part element="mdmport:maintainAllyConsent" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="MaintainAllyConsentResponse">
+		<wsdl:part element="mdmport:maintainAllyConsentResponse" name="parameters"/>
+	</wsdl:message>
+	
+	<wsdl:message name="SearchAllyContractRequest">
+		<wsdl:part element="mdmport:searchAllyContract" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="SearchAllyContractResponse">
+		<wsdl:part element="mdmport:searchAllyContractResponse" name="parameters"/>
+	</wsdl:message>
+	
+
+	<wsdl:portType name="AllyExtPortType">
+		<wsdl:operation name="MAPA">
+			<wsdl:input message="mdmport:MAPARequest"/>
+			<wsdl:output message="mdmport:MAPAResponse"/>
+			<wsdl:fault message="mdmport:ProcessingFault" name="ProcessingFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="searchAllyPerson">
+			<wsdl:input message="mdmport:SearchAllyPersonRequest"/>
+			<wsdl:output message="mdmport:SearchAllyPersonResponse"/>
+			<wsdl:fault message="mdmport:ProcessingFault" name="ProcessingFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="getXConsentGroup">
+			<wsdl:input message="mdmport:GetXConsentGroupRequest"/>
+			<wsdl:output message="mdmport:GetXConsentGroupResponse"/>
+			<wsdl:fault message="mdmport:ProcessingFault" name="ProcessingFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="addXConsentGroup">
+			<wsdl:input message="mdmport:AddXConsentGroupRequest"/>
+			<wsdl:output message="mdmport:AddXConsentGroupResponse"/>
+			<wsdl:fault message="mdmport:ProcessingFault" name="ProcessingFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="updateXConsentGroup">
+			<wsdl:input message="mdmport:UpdateXConsentGroupRequest"/>
+			<wsdl:output message="mdmport:UpdateXConsentGroupResponse"/>
+			<wsdl:fault message="mdmport:ProcessingFault" name="ProcessingFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="getXConsent">
+			<wsdl:input message="mdmport:GetXConsentRequest"/>
+			<wsdl:output message="mdmport:GetXConsentResponse"/>
+			<wsdl:fault message="mdmport:ProcessingFault" name="ProcessingFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="addXConsent">
+			<wsdl:input message="mdmport:AddXConsentRequest"/>
+			<wsdl:output message="mdmport:AddXConsentResponse"/>
+			<wsdl:fault message="mdmport:ProcessingFault" name="ProcessingFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="updateXConsent">
+			<wsdl:input message="mdmport:UpdateXConsentRequest"/>
+			<wsdl:output message="mdmport:UpdateXConsentResponse"/>
+			<wsdl:fault message="mdmport:ProcessingFault" name="ProcessingFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="maintainAllyConsent">
+			<wsdl:input message="mdmport:MaintainAllyConsentRequest"/>
+			<wsdl:output message="mdmport:MaintainAllyConsentResponse"/>
+			<wsdl:fault message="mdmport:ProcessingFault" name="ProcessingFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="searchAllyContract">
+			<wsdl:input message="mdmport:SearchAllyContractRequest"/>
+			<wsdl:output message="mdmport:SearchAllyContractResponse"/>
+			<wsdl:fault message="mdmport:ProcessingFault" name="ProcessingFault"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	
+	<wsdl:binding name="AllyExtHttpBinding" type="mdmport:AllyExtPortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="MAPA">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ProcessingFault">
+				<soap:fault name="ProcessingFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="searchAllyPerson">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ProcessingFault">
+				<soap:fault name="ProcessingFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getXConsentGroup">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ProcessingFault">
+				<soap:fault name="ProcessingFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="addXConsentGroup">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ProcessingFault">
+				<soap:fault name="ProcessingFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="updateXConsentGroup">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ProcessingFault">
+				<soap:fault name="ProcessingFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getXConsent">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ProcessingFault">
+				<soap:fault name="ProcessingFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="addXConsent">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ProcessingFault">
+				<soap:fault name="ProcessingFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="updateXConsent">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ProcessingFault">
+				<soap:fault name="ProcessingFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="maintainAllyConsent">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ProcessingFault">
+				<soap:fault name="ProcessingFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="searchAllyContract">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ProcessingFault">
+				<soap:fault name="ProcessingFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	
+	<wsdl:service name="AllyExtService">
+		<wsdl:port binding="mdmport:AllyExtHttpBinding" name="AllyExtPort">
+			<soap:address location="http://localhost:9080/MDMWSProvider/MDMService"/>
+		</wsdl:port>
+	</wsdl:service>
+	
+</wsdl:definitions>
+		

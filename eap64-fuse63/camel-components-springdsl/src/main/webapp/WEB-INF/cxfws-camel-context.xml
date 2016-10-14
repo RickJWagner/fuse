@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:camel="http://camel.apache.org/schema/spring" xmlns:cxf="http://camel.apache.org/schema/cxf"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd    http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd   
+         			    http://www.springframework.org/schema/util  http://www.springframework.org/schema/util/spring-util-2.5.xsd 
+         			     http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd">
+	
+ 	<!--  Dozer Starts -->
+	<bean class="org.apache.camel.converter.dozer.DozerTypeConverterLoader"
+		id="dozerConverterLoader">
+		<constructor-arg index="0" ref="cxfws-camel-context" />
+		<constructor-arg index="1" ref="mapper" />
+	</bean>
+	<bean class="org.apache.camel.converter.dozer.DozerBeanMapperConfiguration"
+		id="mapper">
+		<property name="mappingFiles">
+			<list>
+				<value>dozerMapping.xml</value>
+			</list>
+		</property>
+	</bean>
+	<!-- End of Dozer -->
+	<!-- Active MQ -->
+	<bean class="org.apache.activemq.camel.component.ActiveMQComponent"
+		id="activemq">
+		<property name="brokerURL" value="tcp://localhost:61616" />
+		<property name="userName" value="admin" />
+		<property name="password" value="admin" />
+	</bean>
+	<!--  End of Activemq -->
+	
+	<!--  CXF  starts -->
+	
+	<bean class="com.sundar.examples.interceptors.RequestInterceptor"
+		id="requestInterceptorBean">
+		<constructor-arg index="0" ref="cxfws-camel-context"></constructor-arg>
+	</bean>
+	<bean class="com.sundar.examples.interceptors.ResponseInterceptor"
+		id="responseInterceptorBean">
+		<constructor-arg index="0" ref="cxfws-camel-context"></constructor-arg>
+	</bean>
+	<bean class="com.sundar.examples.interceptors.HeaderInterceptor" id="headerInterceptor"/>
+ 	
+
+	<cxf:cxfEndpoint id="customerServiceEndPoint"
+		serviceClass="com.predic8.wsdl.crm.crmservice._1.CRMServicePT"
+		address="http://www.predic8.com:8080/crm/CustomerService">
+		<cxf:inInterceptors>
+			<ref bean="responseInterceptorBean" />
+		</cxf:inInterceptors>
+		<cxf:outInterceptors>
+			<ref bean="requestInterceptorBean" />
+			<ref bean="headerInterceptor"/>
+		</cxf:outInterceptors>
+	</cxf:cxfEndpoint>
+	<!--  Cxf Ends -->
+	<!-- End of Active MQ -->
+	<camel:camelContext id="cxfws-camel-context" trace="true"
+		xmlns="http://camel.apache.org/schema/spring">
+		<camel:route id="getUserRoute">
+			<camel:from id="_from1" uri="direct:getUser" />
+			<camel:setHeader headerName="operationName" id="_setHeader1">
+				<camel:constant>get</camel:constant>
+			</camel:setHeader>
+			<camel:to uri="cxf:bean:customerServiceEndPoint" />
+			<camel:convertBodyTo id="_convertBodyTo1"
+				type="com.sundar.examples.model.SoapCustomer" />
+		</camel:route>
+		<camel:route id="createUserRoute">
+			<camel:from id="_from2" uri="direct:createUser" />
+			<camel:setHeader headerName="operationName" id="_setHeader2">
+				<camel:constant>create</camel:constant>
+			</camel:setHeader>
+			<camel:convertBodyTo id="_convertBodyTo2"
+				type="com.predic8.crm._1.CustomerType" />
+			<camel:to uri="cxf:bean:customerServiceEndPoint" />
+		</camel:route>
+		<camel:route id="allUsers">
+			<camel:from id="_from3" uri="direct:GetAll" />
+			<camel:setHeader headerName="operationName" id="_setHeader3">
+				<camel:constant>getAll</camel:constant>
+			</camel:setHeader>
+			<camel:to uri="cxf:bean:customerServiceEndPoint" />
+			<camel:convertBodyTo id="_convertBodyTo3"
+				type="com.sundar.examples.model.SoapCustomers" />
+		</camel:route>
+		<camel:route id="activemqlog">
+			<from uri="direct:activemqlog"></from>
+			<to uri="activemq:queue:reqreslog" />
+		</camel:route>
+	</camel:camelContext>
+</beans>
