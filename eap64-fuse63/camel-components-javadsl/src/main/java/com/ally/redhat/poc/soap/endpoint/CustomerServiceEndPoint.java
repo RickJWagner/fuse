@@ -39,7 +39,7 @@ public class CustomerServiceEndPoint {
 
 		bean.getOutInterceptors().add(requestInterceptor);
 		bean.getInInterceptors().add(responseInterceptor);
-		bean.setAddress("http://localhost:8080/mywebservice1-0.0.1-SNAPSHOT/CustomerService");
+		bean.setAddress("http://www.predic8.com:8080/crm/CustomerService?wsdl");
 		bean.setServiceClass(com.predic8.wsdl.crm.crmservice._1.CRMServicePT.class);
 		CRMServicePT service = (CRMServicePT) bean.create();
 		Client proxy = ClientProxy.getClient(service);
